@@ -11,7 +11,7 @@ import market.dto.assembler.DistilleryDtoAssembler;
 import market.service.DistilleryService;
 
 /*
- *  Test: Distillery
+ *  New class for test: endpoint (POST) to insert a distillery
  */
 @RestController
 @ExposesResourceFor(DistilleryDTO.class)
@@ -26,7 +26,7 @@ public class DistilleryRestController {
 	}
 
 	/*
-	 * Test: insert a new distillery in a region
+	 * New endpoint for test: insert a new distillery in a region
 	*/
 	@PostMapping (value = "distillerydto")
 	public DistilleryDTO createDistillery(@RequestBody DistilleryDTO distillery) {

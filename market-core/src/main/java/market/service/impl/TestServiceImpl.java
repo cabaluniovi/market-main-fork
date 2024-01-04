@@ -25,7 +25,7 @@ import market.domain.UserAccount;
 import market.service.TestService;
 
 /* 
- * Added a service for test: clean the database (deleteAll) and get all data (getAll)
+ * New class for test: clean the database (deleteAll) and get all data (getAll)
  */
 
 @Service
@@ -73,14 +73,15 @@ public class TestServiceImpl implements TestService {
 		productDAO.deleteAll();
 		distilleryDAO.deleteAll();
 		regionDAO.deleteAll();
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "ordered_product");
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "customer_order");
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "cart");
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "contacts");
-	    DbTestUtil.resetAutoIncrementColumns(applicationContext, "user_account");
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "product");	
-	    DbTestUtil.resetAutoIncrementColumns(applicationContext, "distillery");
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "region");	    
+		DbTestUtil.resetAutoIncrementColumns(applicationContext, 
+				"ordered_product",
+				"customer_order", 
+				"cart", 
+				"contacts", 
+				"user_account", 
+				"product", 
+				"distillery", 
+				"region");	
 	}
 	
 	@Override

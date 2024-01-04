@@ -35,7 +35,7 @@ public class ProductsRestController {
 	}
 
 	/*
-	 * Test: insert a new product of a distillery
+	 * New endpoint for test: insert a new product of a distillery
 	*/
 	@PostMapping(value = "productdto")
 	public void createProduct(@RequestBody ProductDTO product) {

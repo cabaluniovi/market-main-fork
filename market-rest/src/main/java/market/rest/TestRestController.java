@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import market.service.TestService;
 
+/*
+ *  New class for test: endpoints (GET and DELETE) to get and detele all data in the database
+ */
 @RestController
 @RequestMapping(value = "test")
 public class TestRestController {
@@ -18,9 +21,9 @@ public class TestRestController {
 		this.testService = testService;
 	}
 	/**
-	 * Get all the existing data
+	 * New endpoint for test: get all the existing data
 	 */
-	@GetMapping
+	@GetMapping("/getAll")
 	public Object getAll() {
 		final Object allData = testService.getAll();
 		
@@ -28,9 +31,9 @@ public class TestRestController {
 	}
 	
 	/**
-	 * Delete all the existing data
+	 * New endpoint for test: delete all the existing data
 	 */
-	@DeleteMapping
+	@DeleteMapping("/deleteAll")
 	public void deleteAll() throws SQLException {
 		testService.deleteAll();
 	}

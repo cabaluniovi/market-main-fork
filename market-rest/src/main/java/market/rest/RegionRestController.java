@@ -11,7 +11,7 @@ import market.dto.assembler.RegionDtoAssembler;
 import market.service.RegionService;
 
 /*
- *  Test: Region
+ *  New class for test: endpoint (POST) to insert a region
  */
 @RestController
 @ExposesResourceFor(RegionDTO.class)
@@ -25,8 +25,8 @@ public class RegionRestController {
 	}
 
 	/*
-	 * Test: insert a new region
-	*/
+	 * New endpoint for test: insert a new region
+	 */
 	@PostMapping (value = "regiondto")
 	public RegionDTO createRegion(@RequestBody RegionDTO region) {
 		Region reg = regionDtoAssembler.toDomain(region);
