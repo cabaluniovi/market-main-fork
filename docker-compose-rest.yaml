@@ -4,7 +4,7 @@ services:
         container_name: db
         image: postgres:9.6
         ports:
-            - 5432:5432
+            - 8084:5432
         environment:
             - POSTGRES_DB=market
             - POSTGRES_USER=market
@@ -15,11 +15,11 @@ services:
             - postgres-data:/var/lib/postgresql/data
     market-rest:
         container_name: market-rest
-        image: alukyanets/market-rest
+        image: market-rest
         depends_on:
             - db
         ports:
-            - 8081:8081
+            - 8083:8081
         environment:
             - SPRING_PROFILES_ACTIVE=prod
             - DB_HOST=db
