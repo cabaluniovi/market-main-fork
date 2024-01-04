@@ -73,7 +73,8 @@ public class TestServiceImpl implements TestService {
 		productDAO.deleteAll();
 		distilleryDAO.deleteAll();
 		regionDAO.deleteAll();
-		DbTestUtil.resetAutoIncrementColumns(applicationContext, "order");
+		DbTestUtil.resetAutoIncrementColumns(applicationContext, "ordered_product");
+		DbTestUtil.resetAutoIncrementColumns(applicationContext, "customer_order");
 		DbTestUtil.resetAutoIncrementColumns(applicationContext, "cart");
 		DbTestUtil.resetAutoIncrementColumns(applicationContext, "contacts");
 	    DbTestUtil.resetAutoIncrementColumns(applicationContext, "user_account");
