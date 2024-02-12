@@ -38,10 +38,14 @@ public class ProductsRestController {
 	 * New endpoint for test: insert a new product of a distillery
 	*/
 	@PostMapping(value = "productdto")
-	public void createProduct(@RequestBody ProductDTO product) {
+	public ProductDTO createProduct(@RequestBody ProductDTO product) {
 		Product prod = productAssembler.dtoDomain(product);
 		
 		productService.create(prod, product.getDistillery());
+		return productService.findById(prod.getId())
+				.map(productAssembler::toModel)
+				.map(this::addListLink)
+				.orElseThrow(() -> new UnknownEntityException(ProductDTO.class, prod.getId()));
 	}
 	
 	/**
