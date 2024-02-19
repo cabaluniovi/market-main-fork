@@ -84,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	@Override
 	public void create(Product product, String distilleryTitle) {
-		saveInternal(product, distilleryTitle, true);
+		saveInternal(product, distilleryTitle, product.isAvailable()); // Change for test: use isAvailable() instead of true			
 	}
 
 	@Transactional
