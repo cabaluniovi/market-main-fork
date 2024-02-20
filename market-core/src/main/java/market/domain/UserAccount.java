@@ -1,6 +1,9 @@
 package market.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -28,9 +31,14 @@ public class UserAccount implements Serializable {
 	@Column(name = "active", nullable = false)
 	private boolean active;
 
+	// Test: anyadido para evitar recursividad en json con Contacts
+	@JsonBackReference
 	@OneToOne(mappedBy = "userAccount", cascade = CascadeType.ALL)
 	private Contacts contacts;
 
+	
+	// Test: anyadido para evitar recursividad en json con Cart
+	@JsonBackReference
 	@OneToOne(mappedBy = "userAccount", cascade = CascadeType.ALL)
 	private Cart cart;
 

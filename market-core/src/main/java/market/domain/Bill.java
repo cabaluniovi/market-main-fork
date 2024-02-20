@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,6 +32,8 @@ public class Bill implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	// 	// Test: anyadido para evitar recursividad en json con order
+	@JsonBackReference
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private Order order;

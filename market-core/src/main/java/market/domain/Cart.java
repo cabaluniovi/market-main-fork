@@ -3,6 +3,8 @@ package market.domain;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class Cart implements Serializable {
 	@GenericGenerator(name = "gen", strategy = "foreign", parameters = @Parameter(name = "property", value = "userAccount"))
 	private long id;
 
+	// Test: anyadido para evitar recursividad en json con UserAccount
+	@JsonManagedReference
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private UserAccount userAccount;

@@ -1,6 +1,9 @@
 package market.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,6 +18,8 @@ public class OrderedProduct implements Serializable {
 	@EmbeddedId
 	private OrderedProductId pk = new OrderedProductId();
 
+	// Test: anyadido para evitar recursividad en json con Order
+	@JsonBackReference
 	@MapsId("orderId")
 	@JoinColumn(name = "customer_order_id", referencedColumnName = "id")
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)

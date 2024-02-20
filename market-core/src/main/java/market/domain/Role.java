@@ -1,6 +1,9 @@
 package market.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.*;
 import java.util.*;
 
@@ -19,6 +22,9 @@ public class Role implements Serializable {
 
 	@Column(name = "title", nullable = false)
 	private String title;
+	
+	// Test: anyadido para evitar recursividad en json con UserAccount
+	@JsonBackReference
 	@ManyToMany(mappedBy = "roles")
 	private Set<UserAccount> users = new HashSet<>();
 
