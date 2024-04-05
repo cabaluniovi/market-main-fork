@@ -95,7 +95,8 @@ public class TestServiceImpl implements TestService {
 		data.contacts=contactsDAO.findAll();
 		data.cart= cartDAO.findAll();
 		data.order=orderDAO.findAll();
-		
+
+		data.userAccount.forEach(e -> e.setPassword("hidden"));
 		return data;
 	}
 }
