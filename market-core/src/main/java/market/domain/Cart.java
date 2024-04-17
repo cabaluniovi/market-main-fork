@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +16,12 @@ import java.util.Objects;
 /**
  * Cart of the {@link UserAccount}.
  */
+/*
+ * Tests: incluido orden de columnas para serializar en Json 
+ */
 @Entity
 @Table(name = "cart")
+@JsonPropertyOrder({"id", "userAccount", "cartItems", "deliveryIncluded", "itemsCost", "itemsCount", "empty"})
 public class Cart implements Serializable {
 	private static final long serialVersionUID = -6884843696895527904L;
 

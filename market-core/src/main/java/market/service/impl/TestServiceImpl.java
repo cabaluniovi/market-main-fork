@@ -1,5 +1,6 @@
 package market.service.impl;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,9 @@ public class TestServiceImpl implements TestService {
     private ApplicationContext applicationContext;
 	
 	
-	public class AllData {	
-    	public List<Cart> cart=new ArrayList<>();
+	public class AllData implements Serializable {	
+    	private static final long serialVersionUID = 1L;
+		public List<Cart> cart=new ArrayList<>();
     	public List<Contacts> contacts=new ArrayList<>();
     	public List<Distillery> distillery=new ArrayList<>();
     	public List<Order> order=new ArrayList<>();
