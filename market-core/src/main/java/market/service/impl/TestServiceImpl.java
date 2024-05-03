@@ -108,6 +108,7 @@ public class TestServiceImpl implements TestService {
 		data.orderedProduct=orderedProductDAO.findAll();
 				
 		data.userAccount.forEach(e -> e.setPassword("hidden"));
+		data.order.forEach(e -> e.setDateCreated(null));
 		data.order.forEach(e -> e.getBill().setDateCreated(null));
 		data.order.forEach(e -> e.getBill().setNumber(0));
 		

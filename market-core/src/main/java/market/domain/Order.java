@@ -3,6 +3,8 @@ package market.domain;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,8 +17,13 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 /**
  * Order of the {@link UserAccount}.
  */
+
+/*
+ * Tests: incluido orden de columnas para serializar en Json 
+ */
 @Entity
 @Table(name = "customer_order")
+@JsonPropertyOrder({"id", "userAccount", "orderedProducts", "bill", "productsCost", "dateCreated", "deliveryCost", "deliveryIncluded", "executed"})
 public class Order implements Serializable {
 	private static final long serialVersionUID = -8328584058042877489L;
 

@@ -3,6 +3,7 @@ package market.domain;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,8 +11,13 @@ import java.util.Objects;
 /**
  * {@link Product} of the {@link Order}.
  */
+
+/*
+ * Tests: incluido orden de columnas para serializar en Json 
+ */
 @Entity
 @Table(name = "ordered_product")
+@JsonPropertyOrder({"pk", "order", "product", "quantity"})
 public class OrderedProduct implements Serializable {
 	private static final long serialVersionUID = -2055528467252485472L;
 

@@ -16,6 +16,7 @@ import java.util.Objects;
 /**
  * Cart of the {@link UserAccount}.
  */
+
 /*
  * Tests: incluido orden de columnas para serializar en Json 
  */
