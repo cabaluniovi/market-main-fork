@@ -40,7 +40,7 @@ public class TestServiceImpl implements TestService {
 	
 	public class AllData implements Serializable {	
     	private static final long serialVersionUID = 1L;
-		public List<Cart> cart=new ArrayList<>();
+    	public List<Cart> cart=new ArrayList<>();
     	public List<Contacts> contacts=new ArrayList<>();
     	public List<Distillery> distillery=new ArrayList<>();
     	public List<Order> order=new ArrayList<>();
@@ -106,8 +106,11 @@ public class TestServiceImpl implements TestService {
 		data.cart= cartDAO.findAll();
 		data.order=orderDAO.findAll();
 		data.orderedProduct=orderedProductDAO.findAll();
-
+				
 		data.userAccount.forEach(e -> e.setPassword("hidden"));
+		data.order.forEach(e -> e.getBill().setDateCreated(null));
+		data.order.forEach(e -> e.getBill().setNumber(0));
+		
 		return data;
 	}
 }
