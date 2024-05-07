@@ -1,12 +1,21 @@
 package market.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.io.*;
 import java.util.*;
 
 /**
  * Primary key of a {@link Product} inside the {@link Order}.
  */
+
+/*
+ * Tests: incluido orden de columnas para serializar en Json 
+ */
+@JsonPropertyOrder({"product","customerOrder"})
+
 @Embeddable
 public class OrderedProductId implements Serializable {
 	private static final long serialVersionUID = 5368453186150127449L;
