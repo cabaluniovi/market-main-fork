@@ -7,6 +7,7 @@ import market.domain.CartItem;
 import market.domain.Order;
 import market.domain.OrderedProduct;
 import market.domain.UserAccount;
+import market.dto.OrderDTO;
 import market.exception.EmptyCartException;
 import market.service.CartService;
 import market.service.OrderService;
@@ -139,5 +140,11 @@ public class OrderServiceImpl implements OrderService {
 			.setOrder(order)
 			.setQuantity(item.getQuantity())
 			.build();
+	}
+
+	@Override
+	public Order createNewOrder(String userLogin, Order order) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

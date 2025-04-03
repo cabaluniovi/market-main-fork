@@ -1,6 +1,8 @@
 package market.dto.assembler;
 
+import market.domain.Distillery;
 import market.domain.Order;
+import market.dto.DistilleryDTO;
 import market.dto.OrderDTO;
 import market.domain.OrderedProduct;
 import market.dto.OrderedProductDTO;
@@ -52,5 +54,16 @@ public class OrderDtoAssembler implements RepresentationModelAssembler<Order, Or
 
 	public OrderDTO[] toDtoArray(List<Order> items) {
 		return toCollectionModel(items).getContent().toArray(new OrderDTO[items.size()]);
+	}
+	
+	// new method for tests
+	public Order toDomain(OrderDTO dto) {
+		.dto..dto
+		
+		new Order.Builder()
+			.setBill(dto.getBillNumber())
+			.setDateCreated(null).setTitle(dto.getTitle())
+			.setDescription(dto.getDescription())
+			.build();
 	}
 }
