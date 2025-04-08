@@ -7,7 +7,6 @@ import market.domain.CartItem;
 import market.domain.Order;
 import market.domain.OrderedProduct;
 import market.domain.UserAccount;
-import market.dto.OrderDTO;
 import market.exception.EmptyCartException;
 import market.service.CartService;
 import market.service.OrderService;
@@ -115,7 +114,7 @@ public class OrderServiceImpl implements OrderService {
 			.setExecuted(false)
 			.build();
 	}
-
+	
 	private Bill createBill(Order order, String cardNumber) {
 		return new Bill.Builder()
 			.setOrder(order)
@@ -142,9 +141,30 @@ public class OrderServiceImpl implements OrderService {
 			.build();
 	}
 
+	// Add for test
 	@Override
-	public Order createNewOrder(String userLogin, Order order) {
-		// TODO Auto-generated method stub
-		return null;
+	public Order createOrder(String userLogin, Order o,String ccNumber) {
+		Order order = new Order.Builder()
+				.setDeliveryIncluded(o.isDeliveryIncluded())
+				.setDeliveryCost(o.getDeliveryCost())
+				.setUserAccount(o.getUserAccount())
+				.setProductsCost(o.getProductsCost())
+				.setDateCreated(o.getDateCreated())
+				.setExecuted(o.isExecuted())
+				.setUserAccount(userAccountService.findByEmail(userLogin))
+				.build();
+		
+		Bill bill = createBill(order, ccNumber);
+		order.setBill(bill);
+		orderDAO.saveAndFlush(order);
+		
+		return order;
+	}
+	//add for test
+	@Transactional(readOnly = true)
+	@Override
+	public Order getOrder(long orderId) {
+		// todo: add user check
+		return orderDAO.findById(orderId).orElse(null);
 	}
 }

@@ -1,7 +1,6 @@
 package market.service;
 
 import market.domain.Order;
-import market.dto.OrderDTO;
 import market.exception.EmptyCartException;
 import market.exception.UnknownEntityException;
 import org.springframework.data.domain.Page;
@@ -45,6 +44,11 @@ public interface OrderService {
 	 * New method for test
 	 * Creates new order
 	 */
-	Order createNewOrder(String userLogin, Order order);
+	Order createOrder(String userLogin, Order order, String ccNumber);
+	
+	/**
+	 * for tests
+	 */
+	Order getOrder(long orderId);
 
 }
