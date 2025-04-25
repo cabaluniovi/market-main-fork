@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import market.domain.Product;
 import market.domain.Order;
+import market.domain.OrderedProduct;
 import market.dto.OrderDTO;
 import market.dto.OrderedProductDTO;
 import market.dto.assembler.OrderDtoAssembler;
@@ -43,6 +44,9 @@ public class OrderedProductRestController {
 		Product product = productService.getProduct(orderedProduct.getProductId());
 		int quantity = orderedProduct.getQuantity();
 		
-		return orderDtoAssembler.toModel(orderedProductService.addToOrder(order, product, quantity));
+		OrderedProduct op = orderedProductService.addToOrder(order, product, quantity);
+		
+		order = orderService.updateOrder(order, op);
+		return orderDtoAssembler.toModel(order);
 	}
 }
