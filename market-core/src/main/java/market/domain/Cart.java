@@ -10,8 +10,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Cart of the {@link UserAccount}.
@@ -117,7 +119,10 @@ public class Cart implements Serializable {
 	}
 
 	public List<CartItem> getCartItems() {
-		return Collections.unmodifiableList(cartItems);
+		//tests: return Collections.unmodifiableList(cartItems); sustitución para devolver los items ordenados por id
+		return cartItems.stream()
+		        .sorted(Comparator.comparingLong(item -> item.getProduct().getId()))
+		        .collect(Collectors.toUnmodifiableList());
 	}
 
 	public boolean isDeliveryIncluded() {
