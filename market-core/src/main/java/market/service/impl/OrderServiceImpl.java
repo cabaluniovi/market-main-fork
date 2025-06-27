@@ -7,6 +7,7 @@ import market.domain.CartItem;
 import market.domain.Order;
 import market.domain.OrderedProduct;
 import market.domain.UserAccount;
+import market.dto.UserOrderTotalDTO;
 import market.exception.EmptyCartException;
 import market.service.CartService;
 import market.service.OrderService;
@@ -198,4 +199,9 @@ public class OrderServiceImpl implements OrderService {
 			.setQuantity(item.getQuantity())
 			.build();
 	}
+	
+	//testing: add to get the total costs of an user's order
+	public List<UserOrderTotalDTO> getTotalAmountByUser() {
+        return orderDAO.findTotalAmountByUser();
+    }
 }

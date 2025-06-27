@@ -8,6 +8,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.hateoas.server.ExposesResourceFor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import market.domain.Order;
 import market.dto.OrderDTO;
+import market.dto.UserOrderTotalDTO;
 import market.dto.assembler.OrderDtoAssembler;
 import market.exception.UnknownEntityException;
 import market.properties.MarketProperties;
@@ -77,4 +79,13 @@ public class OrdersRestController {
 		
 		return orderDtoAssembler.toModel(order);
 	}
+	
+	/**
+	 * New endpoint (POST) for testing: add to get the total costs of an user's order
+	 */
+	@GetMapping("/total-by-user")
+    public ResponseEntity<List<UserOrderTotalDTO>> getTotalOrdersByUser() {
+        List<UserOrderTotalDTO> totals = orderService.getTotalAmountByUser();
+        return ResponseEntity.ok(totals);
+    }
 }

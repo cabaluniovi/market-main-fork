@@ -2,6 +2,7 @@ package market.service;
 
 import market.domain.Order;
 import market.domain.OrderedProduct;
+import market.dto.UserOrderTotalDTO;
 import market.exception.EmptyCartException;
 import market.exception.UnknownEntityException;
 import org.springframework.data.domain.Page;
@@ -58,4 +59,7 @@ public interface OrderService {
 	 * Updates an order inserting an ordered product
 	 */
 	Order updateOrder(Order order, OrderedProduct op);
+
+	//testing: add to get the total costs of an user's order
+	List<UserOrderTotalDTO> getTotalAmountByUser();
 }
