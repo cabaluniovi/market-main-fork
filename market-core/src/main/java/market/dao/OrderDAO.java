@@ -26,9 +26,6 @@ public interface OrderDAO extends CrudRepository<Order, Long>, JpaRepository<Ord
 
 	Page<Order> findByExecutedAndDateCreatedGreaterThan(boolean executed, Date created, Pageable pageable);
 	
-	//@Query(value = "SELECT o FROM Order o INNER JOIN UserAccount u on o.userAccount=u.email WHERE deliveryIncluded = 1 and executed=1 GROUP BY u.email")
-	//Page<Order> findByExcutedGroupByEmail(@Param("region") Region region, Pageable request);
-	
 	// testing: add to get the total costs of an user's order
 	@Query("SELECT u.email as email, SUM(o.productsCost) as totalAmount " +
            "FROM Order o INNER JOIN UserAccount u on o.userAccount=u.id " +
